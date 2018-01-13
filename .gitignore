@@ -3,4 +3,3 @@
 /cc_mysql/
 /cc_blog/content/
 /.env
-/docker-nginx-amplify/.env
