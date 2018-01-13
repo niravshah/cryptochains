@@ -1,0 +1,14 @@
+===============================
+V.4 updated : 4th december 2017
+===============================
+We are updating WHMCS Version 7.4.1
+
+===============================
+V.3 updated : 19th october 2017
+===============================
+Buttons click issue fixed in mobile
+
+===============================
+V.2 updated : 08th october 2017
+===============================
+We are updating WHMCS Version 7.3

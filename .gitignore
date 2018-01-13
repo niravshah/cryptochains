@@ -1,5 +1,6 @@
 .idea
 /cc_website/node_modules/
 /cc_mysql/
-/cc_blog/data/
-/cc_blog/logs/
+/cc_blog/content/
+/.env
+/docker-nginx-amplify/.env

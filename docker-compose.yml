@@ -1,4 +1,4 @@
-version: '2'
+version: '3.1'
 services:
   mysql:
     image: 'mysql:5.7'
@@ -6,23 +6,23 @@ services:
     volumes:
       - ./cc_mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=blog_db
       - MYSQL_USER=blog_user
-      - MYSQL_PASSWORD=blog_password
+      - MYSQL_PASSWORD=${BLOG_PASSWORD}
   blog:
     image: 'ghost:1-alpine'
     restart: 'always'
     expose:
       - '2368'
     environment:
-      - database__client=mysql
-      - database__connection__host=mysql
-      - database__connection__user=blog_user
-      - database__connection__password=blog_password
-      - database__connection__database=blog_db
+      database__client: mysql
+      database__connection__host: mysql
+      database__connection__user: blog_user
+      database__connection__password: ${BLOG_PASSWORD}
+      database__connection__database: blog_db
     volumes:
-      - ./cc_blog:/var/lib/ghost/content
+      - ./cc_blog/content:/var/lib/ghost/content
     depends_on:
       - mysql
   website:
@@ -30,19 +30,24 @@ services:
     restart: 'always'
     command: "sh -c 'npm install && npm start'"
     expose:
-          - '3000'
+      - '3000'
     volumes:
       - ./cc_website:/app
     depends_on:
       - mysql
   webserver:
-    image: 'nginx'
+    image: 'nginx-amplify'
     restart: 'always'
+    environment:
+      - API_KEY=${AMPLIFY_API_KEY}
+      - AMPLIFY_IMAGENAME=${AMPLIFY_IMAGENAME}
     ports:
       - '80:80'
       - '443:443'
     volumes:
       - ./cc_webserver/vhosts:/etc/nginx/conf.d/:ro
+    links:
+      - blog:blog
     depends_on:
       - blog
       - website

@@ -1,0 +1,31 @@
+Note: "Version: 7.4.1" Updates only for Existing Users. New Users Use directly
+
+Updation Steps:
+
+Step1 : Please take backup your "thehostwhmcs" template folder
+
+Step2 : Take saparate backckup "header.tpl, footer.tpl"
+
+Step3 : Download "webhostwhmcs" updated V.4.1 files
+
+Step4 : Upload to WHMCS ftp location "thehostwhmcs"
+
+Step5 : Last step upload (Overwrite existing backup files) "header.tpl, footer.tpl"
+
+Your WHMCS 7.4.1 successfully Updated..
+
+
+
+Updation:
+
+///////////////////////
+1) Header.tpl 
+//////////////////////
+
+1) Line No: 14
+
+Remove :
+<body>
+
+Add :
+<body data-phone-cc-input="{$phoneNumberInputStyle}">
