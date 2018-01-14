@@ -3,3 +3,4 @@
 /cc_mysql/
 /cc_blog/content/
 /.env
+/cc_webserver/certs/
