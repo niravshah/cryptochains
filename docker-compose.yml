@@ -50,6 +50,7 @@ services:
       - ./cc_webserver/snippets:/etc/nginx/snippets/:ro
     links:
       - blog:blog
+      - website:website
     depends_on:
       - blog
       - website
