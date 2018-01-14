@@ -46,6 +46,7 @@ services:
       - '443:443'
     volumes:
       - ./cc_webserver/vhosts:/etc/nginx/conf.d/:ro
+      - ./cc_webserver/snippets:/etc/nginx/snippets/:ro
     links:
       - blog:blog
     depends_on:
