@@ -36,7 +36,7 @@ services:
     depends_on:
       - mysql
   webserver:
-    image: 'nginx-amplify-pagespeed'
+    image: 'cryptochains/nginx-amplify-pagespeed'
     restart: 'always'
     environment:
       - API_KEY=${AMPLIFY_API_KEY}
