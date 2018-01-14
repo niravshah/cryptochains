@@ -54,3 +54,10 @@ services:
     depends_on:
       - blog
       - website
+  portainer:
+    image: 'portainer/portainer'
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ./cc_portainer:/data
+    ports:
+    - '9000:9000'
