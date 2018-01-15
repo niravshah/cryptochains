@@ -4,3 +4,4 @@
 /cc_blog/content/
 /.env
 /cc_webserver/certs/
+/cc_portainer/
