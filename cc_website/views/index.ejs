@@ -581,21 +581,14 @@
                 e.preventDefault();
                 $(this).find(':input[type=submit]').prop('disabled', true);
 
-                console.log('Looks Good', $('#askAQuestionForm').serialize())
                 var data = {};
                 data['email'] = $('#askAQuestionFormEmail').val();
                 data['question'] = $('#askAQuestionFormQ').val();
 
-                $.post("/api/askAQuestion", JSON.stringify(data)).done(function (data, status) {
-                    console.log(data, status);
-                    /*
-                     if (err) {
-                     $('#askAQuestionModalMessage').text(err.message);
-                     $('#askAQuestionModalMessage').show();
-                     } else {
-                     console.log(err);
-                     }
-                     */
+                $.post("/api/askAQuestion", data).done(function (data, status) {
+                    $('#askAQuestionModalMessage').addClass('green');
+                    $('#askAQuestionModalMessage').text("Your question has been submitted. We will be in touch soon. Thanks.");
+                    $('#askAQuestionModalMessage').show();
                 }).fail(function (err) {
                     $('#askAQuestionModalMessage').addClass('red');
                     $('#askAQuestionModalMessage').text("Sorry we couldnt not process your request. Error: " + err.statusText);

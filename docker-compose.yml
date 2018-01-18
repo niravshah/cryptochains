@@ -37,6 +37,9 @@ services:
     command: "sh -c 'npm install && npm start'"
     expose:
       - '3000'
+    environment:
+      - MAILGUN_DOMAIN=${MAILGUN_DOMAIN}
+      - MAILGUN_APIKEY=${MAILGUN_APIKEY}
     volumes:
       - ./cc_website:/app
     depends_on:
