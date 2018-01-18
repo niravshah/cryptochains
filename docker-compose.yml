@@ -46,7 +46,7 @@ services:
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - ./cc_portainer:/data
-    exposes:
+    expose:
     - '9000'
   wiki:
     image: 'bitnami/node:latest'
