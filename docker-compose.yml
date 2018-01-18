@@ -41,13 +41,13 @@ services:
       - ./cc_website:/app
     depends_on:
       - mysql
-  portainer:
+  docker:
     image: 'portainer/portainer'
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - ./cc_portainer:/data
-    ports:
-    - '9000:9000'
+    exposes:
+    - '9000'
   wiki:
     image: 'bitnami/node:latest'
     restart: 'always'
@@ -73,7 +73,9 @@ services:
       - blog:blog
       - website:website
       - wiki:wiki
+      - docker:docker
     depends_on:
       - blog
       - website
       - wiki
+      - docker
