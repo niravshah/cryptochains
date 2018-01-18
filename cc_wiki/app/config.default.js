@@ -22,26 +22,33 @@ var config = {
     // Excerpt length (used in search)
     excerpt_length: 400,
 
-    //Application base url
-    base: '/',
+//Application base url. While most of the application uses relative paths
+    //for routing, this is used for things like SEO which require absolute URLs
+    base: "/",
 
-    // Path in which to store content (markdown files, etc.)
-    content_dir: __dirname + "/content/",
+    // Specify the theme to use
+    theme_dir: __dirname + "/themes/",
+    theme_name: "default",
 
     // Path in which to store uploads (images etc.)
     uploads_dir: __dirname + "/uploads/",
 
+    // Path in which to store content (markdown files, etc.)
+    content_dir: __dirname + "/content/",
+
     // Path in which to store data (analytics, etc.)
     data_dir: __dirname + "/data/",
+
+    // Path to the static file directory for themes
+    public_dir: __dirname + "/themes/default/public/",
+    // Optional Lunr locale
+    lunr_locale: "",
 
     // Secret key used to sync two servers
     sync_key: "",
 
-    // Optional Lunr locale
-    lunr_locale: "",
-
     // Set to true to enable HTTP Basic Authentication
-    authentication: false,
+    authentication: true,
     // Set the Authentication mode. Options:
     // - "all" : Requires authentication for all pages
     // - "admin" : Requires authentication for only admin pages (edit / save / etc.).
