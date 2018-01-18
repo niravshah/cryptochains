@@ -18,8 +18,9 @@ router.post('/askAQuestion', function (req, res, next) {
     nodemailerMailgun.sendMail({
         from: 'info@mail.cryptochains.in',
         to: 'help@cryptochains.in',
-        subject: 'New User Query',
-        text: 'From: ' + req.body.email + ' Question: ' + req.body.question
+        subject: 'New User Query from: ' + req.body.email,
+        'h:Reply-To': req.body.email,
+        html: '<p>From: </p><p>' + req.body.email + '</p><br/><p> Question: </p><p>' + req.body.question + '</p>'
     }, function (err, info) {
         if (err) {
             res.status(500).json({message: err.message})
