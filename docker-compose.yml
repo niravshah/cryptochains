@@ -48,20 +48,14 @@ services:
     - ./cc_portainer:/data
     ports:
     - '9000:9000'
-  bookstack:
-    image: solidnerd/bookstack:0.19.0
-    depends_on:
-    - mysql
-    environment:
-    - DB_HOST=mysql:3306
-    - DB_DATABASE=${BOOKSTACK_DB}
-    - DB_USERNAME=${BOOKSTACK_USER}
-    - DB_PASSWORD=${BOOKSTACK_PASS}
-    volumes:
-    - ./cc_bookstack/uploads:/var/www/bookstack/public/uploads
-    - ./cc_bookstack/storage:/var/www/bookstack/public/storage
+  wiki:
+    image: 'bitnami/node:latest'
+    restart: 'always'
+    command: "sh -c 'npm install && npm start'"
     expose:
-    - '8080'
+      - '3010'
+    volumes:
+      - ./cc_wiki/app:/app
   webserver:
     image: 'cryptochains/nginx-amplify-pagespeed'
     restart: 'always'
@@ -78,7 +72,8 @@ services:
     links:
       - blog:blog
       - website:website
+      - wiki:wiki
     depends_on:
       - blog
       - website
-      - bookstack
+      - wiki

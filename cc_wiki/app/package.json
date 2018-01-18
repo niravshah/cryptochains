@@ -1,0 +1,14 @@
+{
+  "name": "cc_wiki",
+  "version": "1.0.0",
+  "description": "Crypto Chains Wiki",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nirav shah",
+  "license": "ISC",
+  "dependencies": {
+    "hazel-wiki": "^1.1.8"
+  }
+}
