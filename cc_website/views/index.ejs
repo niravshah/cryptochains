@@ -38,7 +38,8 @@
                 <ul class="list-inline">
                     <li><a data-toggle="modal" data-target="#askAQuestionModal" href="#"><i
                                     class="fa fa-envelope"></i><span> Ask a Question?</span></a></li>
-                    <li><a href="https://wikki.cryptochains.in"><i class="fa fa-book"></i><span> Knowledge Base</span></a></li>
+                    <li><a href="https://wiki.cryptochains.in" target="_blank"><i class="fa fa-book"></i><span> Knowledge Base</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -76,7 +77,7 @@
                 <nav id="desktop-menu">
                     <ul class="sf-menu" id="navigation">
                         <li class="current"><a href="#">Home</a></li>
-                        <li><a href="https://blog.cryptochains.in">Blog</a></li>
+                        <li><a href="https://blog.cryptochains.in" target="_blank">Blog</a></li>
                     </ul>
                 </nav>
             </div>
@@ -459,7 +460,9 @@
                 <form id="askAQuestionForm" data-toggle="validator">
                     <div class="form-group">
                         <label for="askAQuestionFormEmail">Email address</label>
-                        <input id="askAQuestionFormEmail" name="email" type="email" class="form-control" placeholder="Please enter your email" required="required" data-error="Email is required.">
+                        <input id="askAQuestionFormEmail" name="email" type="email" class="form-control"
+                               placeholder="Please enter your email" required="required"
+                               data-error="Email is required.">
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
@@ -579,7 +582,7 @@
                 $.post("/api/askAQuestion", JSON.stringify(data), function (data, err) {
                     console.log(data, err);
                 });
-            }else{
+            } else {
                 console.log('Invalid Form')
             }
         })
