@@ -1001,8 +1001,8 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #000000!important;
-  border-color: #000000!important;
+    background-color: #00da54;
+    border-color: #00a63f;
 }
 
 .footer-cta {
@@ -1017,8 +1017,8 @@ body .before-main-wrapper .header-wrapper h3 {
 
 body .before-main-wrapper .header-wrapper {
   color: #ffffff;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .before-main-wrapper .header-wrapper:after {
@@ -1087,8 +1087,8 @@ article a {
 }
 
 .btn-primary {
-  background-color: #282828;
-  border-color: #282828;
+  background-color: #00a63f;
+  border-color: #00a63f;
 }
 
 input[type="text"]:focus,
@@ -1103,8 +1103,8 @@ a:hover {
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #000000;
-  border-color: #000000;
+  background-color: #00cc51;
+  border-color: #00a63f;
 }
 
 .btn {
