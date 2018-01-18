@@ -51,3 +51,16 @@
     background-color: #00a63f;
     color: #ffffff;
 }
+
+#askAQuestionModal .red {
+    color:red;
+}
+#askAQuestionModal .green {
+    color:#00a63f;
+}
+@media only screen and (min-width: 768px)  {
+    #askAQuestionModal .btn-right {
+        position: absolute;
+        right: 20px;
+    }
+}

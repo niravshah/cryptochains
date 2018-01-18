@@ -468,13 +468,16 @@
                     <div class="form-group">
                         <label for="askAQuestionFormQ">Your Question</label>
                         <textarea id="askAQuestionFormQ" name="question" type="text" class="form-control" rows="10"
-                                  required></textarea>
+                                  placeholder="How can we help?" required></textarea>
                     </div>
-                    <input type="submit" class="btn btn-success btn-send pull-right" value="Send message">
-
+                    <div class="form-group" style="height: 40px">
+                        <input type="submit" class="btn btn-success btn-send btn-right" value="Send message">
+                    </div>
                 </form>
             </div>
-
+            <div class="modal-footer">
+                <p id="askAQuestionModalMessage" style="padding:20px;text-align: left;display: none">Form Submitted</p>
+            </div>
         </div>
     </div>
 </div>
@@ -494,7 +497,6 @@
 <script src="js/jquery.responsiveTabs.js"></script>
 <script src="js/jquery.counterup.min.js"></script>
 <script src="js/jquery.sticky.js"></script>
-<script src="js/jquery.slicknav.min.js"></script>
 <script src="js/jquery.slicknav.min.js"></script>
 <!--script src="js/retina.min.js"></script-->
 <script src="js/jquery.parallax-1.1.3.js"></script>
@@ -567,25 +569,41 @@
             }
         }
 
-        $('#askAQuestionForm').validator();
+        $('#askAQuestionForm').validator().on('submit', function (e) {
+            if (e.isDefaultPrevented()) {
+                console.log('Default Prevented')
+                $('#askAQuestionModalMessage').addClass('red');
+                $('#askAQuestionModalMessage').text("Please complete all form fields correctly");
+                $('#askAQuestionModalMessage').show();
 
-
-        $('#askAQuestionModalSubmit').on("click", function (e) {
-            e.preventDefault();
-            var form = document.getElementById('askAQuestionForm');
-            console.log(form.checkValidity())
-
-            var data = {};
-            data['email'] = $('#askAQuestionFormEmail').val();
-            data['question'] = $('#askAQuestionFormQ').val();
-            if (form.checkValidity()) {
-                $.post("/api/askAQuestion", JSON.stringify(data), function (data, err) {
-                    console.log(data, err);
-                });
             } else {
-                console.log('Invalid Form')
+
+                e.preventDefault();
+                $(this).find(':input[type=submit]').prop('disabled', true);
+
+                console.log('Looks Good', $('#askAQuestionForm').serialize())
+                var data = {};
+                data['email'] = $('#askAQuestionFormEmail').val();
+                data['question'] = $('#askAQuestionFormQ').val();
+
+                $.post("/api/askAQuestion", JSON.stringify(data)).done(function (data, status) {
+                    console.log(data, status);
+                    /*
+                     if (err) {
+                     $('#askAQuestionModalMessage').text(err.message);
+                     $('#askAQuestionModalMessage').show();
+                     } else {
+                     console.log(err);
+                     }
+                     */
+                }).fail(function (err) {
+                    $('#askAQuestionModalMessage').addClass('red');
+                    $('#askAQuestionModalMessage').text("Sorry we couldnt not process your request. Error: " + err.statusText);
+                    $('#askAQuestionModalMessage').show();
+                });
+
             }
-        })
+        });
     });
 
     $(document).on("ready", function (e) {
