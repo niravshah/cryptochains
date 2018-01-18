@@ -5,3 +5,4 @@
 /.env
 /cc_webserver/certs/
 /cc_portainer/
+/cc_bookstack/storage/

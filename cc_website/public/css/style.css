@@ -2065,7 +2065,7 @@ span.chooseprice:after {
 	font-size: 16px;
 	padding: 10px;
 }
-.r-tabs .r-tabs-accordion-title.r-tabs-state-active .r-tabs-anchor, {
+.r-tabs .r-tabs-accordion-title.r-tabs-state-active .r-tabs-anchor {
 	background: #fd7140;
 	color: #fff;
 	text-shadow: none;
